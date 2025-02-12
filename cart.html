@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediVault - Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .total-row {
+            font-weight: bold;
+            text-align: right;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <header >
+        <h1>Your Cart</h1>
+    </header>
+
+    <div class="cart-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Medicine Name</th>
+                    <th>Quantity</th>
+                    <th>Cost of 1 Quantity (₹)</th>
+                    <th>Cost (₹)</th>
+
+                </tr>
+            </thead>
+            <tbody id="cart-list">
+
+            </tbody>
+        </table>
+        <div class="total-row">
+            <h3>Total Cost: ₹<span id="total-cost">0</span></h3>
+        </div>
+    </div>
+
+    <button class="checkout-button" onclick="finalizeCheckout()">Finalize Checkout</button>
+
+    <script>
+
+        function displayCart() {
+            const cartList = document.getElementById("cart-list");
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalCostElement = document.getElementById("total-cost");
+            let totalCost = 0;
+
+            if (cart.length === 0) {
+                cartList.innerHTML = "<tr><td colspan='5'>Your cart is empty!</td></tr>";
+                return;
+            }
+
+            cartList.innerHTML = ""; // Clear previous contents
+
+            cart.forEach(item => {
+                const cartItem = document.createElement("tr");
+                cartItem.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>₹${item.cost}</td> <!-- Cost per unit -->
+                    <td>₹${item.cost * item.quantity}</td> <!-- Total cost -->
+                
+                `;
+                cartList.appendChild(cartItem);
+
+                totalCost += item.cost * item.quantity;
+            });
+
+            totalCostElement.innerText = totalCost;
+        }
+
+
+        function finalizeCheckout() {
+            alert("Thank you for your purchase!");
+            localStorage.removeItem('cart');
+            window.location.href = 'buy-meds.html';
+        }
+
+
+        displayCart();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediVault - Restocking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h2>Restocking Medicines</h2>
+    </header>
+    <div class="restock-container">
+        <form id="restock-form" onsubmit="restockMedicine(event)">
+            <input type="text" id="medicine-name" placeholder="Medicine Name" required>
+            <input type="number" id="medicine-quantity" placeholder="Quantity" required>
+            <input type="date" id="medicine-expiry" placeholder="Expiry Date" required>
+            <button type="submit">Restock</button>
+        </form>
+    </div>
+
+    <script>
+        
+        const medicines = [
+            { name: "Paracetamol", expiryDate: "2024-12-31", quantity: 150, manufacturer: "ABC Pharma" },
+            { name: "Ibuprofen", expiryDate: "2025-01-15", quantity: 200, manufacturer: "XYZ Pharma" },
+            { name: "Aspirin", expiryDate: "2024-11-20", quantity: 100, manufacturer: "PQR Pharma" },
+            { name: "Amoxicillin", expiryDate: "2025-05-10", quantity: 75, manufacturer: "LMN Pharma" },
+            { name: "Lisinopril", expiryDate: "2024-09-30", quantity: 50, manufacturer: "JKL Pharma" }
+        ];
+
+        // Function to restock medicine
+        function restockMedicine(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            const medicineName = document.getElementById("medicine-name").value;
+            const quantity = parseInt(document.getElementById("medicine-quantity").value);
+            const expiryDate = document.getElementById("medicine-expiry").value;
+
+            // Check if the medicine already exists
+            const existingMedicine = medicines.find(medicine => medicine.name.toLowerCase() === medicineName.toLowerCase());
+            if (existingMedicine) {
+                existingMedicine.quantity += quantity; // Update the existing quantity
+                existingMedicine.expiryDate = expiryDate; // Update the expiry date
+            } else {
+                // Add new medicine
+                medicines.push({ name: medicineName, expiryDate: expiryDate, quantity: quantity, manufacturer: "Unknown" });
+            }
+
+            // Alert user and clear the form
+            alert(`Successfully restocked ${medicineName}. New Quantity: ${existingMedicine ? existingMedicine.quantity : quantity}`);
+            document.getElementById("restock-form").reset();
+        }
+    </script>
+</body>
+
+</html>

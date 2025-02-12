@@ -1,0 +1,437 @@
+/* Reset and general styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+
+    padding-top: 50%;
+    padding: fix;
+
+}
+
+body {
+
+    font-family: Arial, sans-serif;
+    background: #8ebdec;
+    color: #333;
+}
+
+/* Login Page */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f4fff8;
+}
+
+.login-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.login-card:hover {
+    transform: scale(1.03);
+}
+
+.login-card h2 {
+    color: #008080;
+}
+
+.login-card input,
+.login-card button {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.login-card button {
+    background: #5891d8;
+    color: #fff;
+    cursor: pointer;
+}
+
+.login-card button:hover {
+    background: #007070;
+}
+
+/* Dashboard */
+.dashboard-header {
+    background: #008080;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 12px;
+    height: 500px;
+    width: 750px;
+    padding-top: 10%;
+
+}
+
+
+.navbar button {
+    margin: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    height: 50px;
+
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.navbar button:hover {
+    background: #43a047;
+    height: 52px;
+    cursor: pointer;
+    
+}
+
+.logout-button {
+    background: #f44336;
+}
+
+/* Buy Meds Page */
+
+.buymed {
+    color: #003366;}
+
+.buymedheader {
+    background-color: #f4fff8;
+}
+.medicine-list {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 2000px;
+    margin: auto;
+}
+
+.medicine-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem;
+    gap: 2rem;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.medicine-card:hover {
+    background-color: #c7e2ff;
+}
+
+.medicine-card:active {
+    opacity: 0.2;
+
+}
+
+.medicine-info {
+    display: flex;
+    gap: 2rem;
+    flex: 1;
+}
+
+.medicine-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: ç;
+}
+
+.medicine-expiry {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Add to Cart Button */
+.add-to-cart {
+    padding: 0.1rem 0.3rem;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.4rem;
+    height: 25px;
+    width: 40px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-to-cart:hover {
+    background-color: #388e3c;
+    transform: scale(1.05);
+}
+
+.add-to-cart.active {
+    background-color: #2ecc40;
+    transform: scale(1.05);
+}
+
+/* Checkout Button */
+.checkout-button {
+    display: block;
+    width: auto;
+    max-height: 30px;
+    margin: 1rem auto;
+    padding: 0.3rem 1.2rem;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.checkout-button:hover {
+    background-color: #388e3c;
+}
+
+/* Search Bar */
+.search-bar {
+    width: 100%;
+    margin: 1.5rem auto;
+    padding: 1.2rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.search-bar button {
+    padding: 1rem 1.5rem;
+    background: #007acc;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #005a9e;
+    transform: scale(1.05);
+}
+
+.restock-container input,
+.restock-container button {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.restock-container button {
+    background: #008080;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* General Styling */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4fff8;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #003366;
+    
+    }
+     
+
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    background:
+    repeating-linear-gradient( -45deg,#f4fff8, #dff5e7 1px,#000 1px);
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #003366;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Layout */
+.database-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+}
+
+button {
+    flex: 1;
+    padding: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #007acc;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s, background-color 0.3s;
+}
+
+/* Button Hover and Animation */
+button:hover {
+    background-color: #005a9e;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .database-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    button {
+        flex: 1 1 45%;
+    }
+
+    .data-table {
+        border: 2px solid black;
+
+    }
+
+    .dashboard-header {
+
+        margin-top: 10%;
+    }
+
+    .dashboard-head {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* General styling for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4fff8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+
+}
+
+/* Header styling */
+header {
+
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+header h2 {
+    margin: 0;
+}
+
+/* Table styling */
+table.data-table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+table.data-table thead {
+    background-color: #005a9e;
+    color: white;
+}
+
+table.data-table th,
+table.data-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+/* Zebra striping rows */
+table.data-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Hover effect */
+table.data-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Responsive table */
+@media screen and (max-width: 600px) {
+
+    table.data-table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+        width: 100%;
+    }
+
+    table.data-table tr {
+        margin-bottom: 15px;
+    }
+
+    table.data-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    table.data-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        padding-left: 15px;
+        font-weight: bold;
+    }
+}

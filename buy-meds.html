@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediVault - Buy Meds</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <header class="buymedheader">
+        <h1 class="buymed">Buy Medicines</h1>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search for medicines..." oninput="searchMedicines()">
+    </div>
+
+    <div class="medicine-list" id="medicine-list">
+
+    </div>
+
+    <button class="checkout-button" onclick="checkout()">Checkout</button>
+
+    <script>
+        const medicines = [
+            { name: "Paracetamol", expiryDate: "2024-12-31", quantity: 150, manufacturer: "ABC Pharma", cost: 50 },
+            { name: "Ibuprofen", expiryDate: "2025-01-15", quantity: 200, manufacturer: "XYZ Pharma", cost: 30 },
+            { name: "Aspirin", expiryDate: "2024-11-20", quantity: 100, manufacturer: "PQR Pharma", cost: 20 },
+            { name: "Amoxicillin", expiryDate: "2025-05-10", quantity: 75, manufacturer: "LMN Pharma", cost: 120 },
+            { name: "Lisinopril", expiryDate: "2024-09-30", quantity: 50, manufacturer: "JKL Pharma", cost: 80 }
+        ];
+
+
+        function displayMedicines() {
+            const medicineList = document.getElementById("medicine-list");
+            medicineList.innerHTML = ""; // Clear previous contents
+
+            medicines.forEach(medicine => {
+                const medicineCard = document.createElement("div");
+                medicineCard.className = "medicine-card";
+                medicineCard.innerHTML = `
+                    <h3>${medicine.name}</h3>
+                    <p>Expiry Date: ${medicine.expiryDate}</p>
+                    <p>Cost: ₹${medicine.cost}</p> <!-- Display cost in Rupees -->
+                    <button onclick="addToCart('${medicine.name}', ${medicine.quantity}, ${medicine.cost})">Add to Cart</button>
+                `;
+                medicineList.appendChild(medicineCard);
+            });
+        }
+
+        // Function to add medicines to cart
+        function addToCart(medicineName, availableQuantity, cost) {
+            const quantity = prompt(`Enter quantity of ${medicineName} to add to cart (Available: ${availableQuantity}):`);
+            const qtyNumber = parseInt(quantity);
+
+            if (qtyNumber > 0 && qtyNumber <= availableQuantity) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Check if the medicine is already in the cart
+                const existingItem = cart.find(item => item.name === medicineName);
+
+                if (existingItem) {
+                    // Update the quantity if already in cart
+                    existingItem.quantity += qtyNumber;
+                } else {
+                    // Add new item to cart
+                    cart.push({ name: medicineName, quantity: qtyNumber, cost: cost });
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`${qtyNumber} of ${medicineName} added to cart!`);
+            }
+        }
+
+
+        function checkout() {
+            window.location.href = 'cart.html';
+        }
+
+        // Function to filter and display medicines based on search
+        function searchMedicines() {
+            const searchValue = document.getElementById("search-bar").value.toLowerCase();
+            const filteredMedicines = medicines.filter(medicine => medicine.name.toLowerCase().includes(searchValue));
+            const medicineList = document.getElementById("medicine-list");
+            medicineList.innerHTML = ""; // Clear previous contents
+
+            filteredMedicines.forEach(medicine => {
+                const medicineCard = document.createElement("div");
+                medicineCard.className = "medicine-card";
+                medicineCard.innerHTML = `
+                    <h3>${medicine.name}</h3>
+                    <p>Expiry Date: ${medicine.expiryDate}</p>
+                    <p>Cost: ₹${medicine.cost}</p>
+                    <button onclick="addToCart('${medicine.name}', ${medicine.quantity}, ${medicine.cost})">Add to Cart</button>
+                `;
+                medicineList.appendChild(medicineCard);
+            });
+        }
+
+        // Call displayMedicines to show initial medicines
+        displayMedicines();
+    </script>
+</body>
+
+</html>
